@@ -105,4 +105,30 @@ object RecurSion extends App {
   val input5 = "abc"
   val res6 = generateSubsets2(input5)
   println(s"res6 :: ${res6}")
+
+
+
+  def toh(n: Int, A: Char, B: Char, C: Char): Unit = {
+
+    if(n == 1) {
+      println(s"Move disk 1 from ${A} to ${C}")
+    } else {
+
+      // move n-1 disks from A to B
+      toh(n-1, A, C, B)
+
+      // move nth disk from A to C
+      println(s"Move disk ${n} from ${A} to ${C}")
+
+      // move n-1 disks from B to C
+      toh(n-1, B, A, C)
+      
+      
+    }
+
+  }
+
+  toh(3, 'A', 'B', 'C')
+
+  
 }
