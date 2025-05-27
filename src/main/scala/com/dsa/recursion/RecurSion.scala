@@ -130,5 +130,86 @@ object RecurSion extends App {
 
   toh(3, 'A', 'B', 'C')
 
+
+  def jos(n: Int, k : Int): Int = {
+
+    if ( n == 1) 0
+    else (jos(n-1, k) + k) % n
+
+  }
+
+  val res7 = jos(5, 3)
+  println(s"res7 :: ${res7}")
+  
+
+  def sumOfSubsets(n: Int, arr: List[Int]): Int = {
+
+    if ( n == 0 ) 1
+    else if (arr.isEmpty) {
+
+      if ( n == 0 ) 1
+      else 0
+
+    }
+    else {
+
+      val res1 = sumOfSubsets(n - arr.head, arr.tail)
+      val res2 = sumOfSubsets(n, arr.tail )
+
+      res1 + res2
+
+    }
+
+  }
+
+  val input6 = List(1, 2, 3, 4, 5)
+  val res8 = sumOfSubsets(5, input6)
+  println(s"res8 :: ${res8}")
+
+  val input7 = List(10, 5, 2, 3, 6)
+  val res9 = sumOfSubsets(8, input7)
+  println(s"res9 :: ${res9}")
+
+
+  def swap(s: String, i: Int, j: Int): String = {
+
+    val charArray = s.toCharArray
+    val temp = charArray(i)
+    charArray(i) = charArray(j)
+    charArray(j) = temp
+    charArray.mkString("")
+  }
+
+  def permutationsOfString(s: String, i: Int): List[String] = {
+
+    if ( i == s.length - 1 ) List(s)
+
+    else {
+
+      var res1 = List[String]()
+
+
+      for ( j <- i to s.length - 1) {
+
+        val newString = swap(s, i, j)
+
+        val res2 = permutationsOfString(newString, i + 1)
+
+        println(s"res2 :: ${res2}")
+
+        res1 = res1 ++ res2
+
+      }
+
+      res1
+
+    }
+  }
+
+  val input8 = "abcd"
+  val res10 = permutationsOfString(input8, 0)
+  println(s"res10 :: ${res10}")
+
+
   
 }
