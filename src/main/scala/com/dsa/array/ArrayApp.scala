@@ -1,5 +1,7 @@
 package com.dsa.array
 
+import java.security.Identity
+
 object ArrayApp extends App {
 
 
@@ -183,7 +185,7 @@ object ArrayApp extends App {
   println(s"res8 :: ${res8.mkString(",")}")
 
 
-  def helper(arr: Array[Int], d: Int): Array[Int] = {
+  def leftRotateAnArrayByD(arr: Array[Int], d: Int): Array[Int] = {
 
     val temp = arr.take(d)
 
@@ -194,8 +196,111 @@ object ArrayApp extends App {
   }
 
   val input9 = Array(1, 2, 3, 4, 5)
-  val res9 = helper(input9, 2)
+  val res9 = leftRotateAnArrayByD(input9, 2)
   println(s"res9 :: ${res9.mkString(",")}")
+
+
+  def leaderInAnArray(arr: Array[Int]): Unit = {
+
+
+    var max_ = Int.MinValue
+    arr.reverse.foreach(x => {
+
+      if ( x > max_) {
+        println(s"x :: ${x}")
+        max_ = x
+      }
+
+      x
+
+    })
+
+
+  }
+
+  val input10 = Array(1, 2, 3, 4, 5)
+  leaderInAnArray(input10)
+
+  val input11 = Array(7, 10, 4, 3, 6, 5, 2)
+  leaderInAnArray(input11)
+
+
+
+  def maxDifference(arr: Array[Int]): Int = {
+    if (arr.length < 2) return 0
+    
+    arr.foldLeft((arr.head, 0))((acc, x) => {
+      val (minSoFar, maxDiff) = acc
+      val newMaxDiff = math.max(maxDiff, x - minSoFar)
+      val newMin = math.min(minSoFar, x)
+      (newMin, newMaxDiff)
+    })._2
+  }
+
+  val input12 = Array(7, 10, 4, 3, 7, 5, 2)
+  val res12 = maxDifference(input12)
+  println(s"res12 :: ${res12}")
+
+
+  def maxDifference2(arr: Array[Int]): Int = {
+    if (arr.length < 2) return 0
+    
+    arr.foldLeft((arr.head, 0))((acc, x) => {
+      val (minSoFar, maxDiff) = acc
+      val newMaxDiff = math.max(maxDiff, x - minSoFar)
+      val newMin = math.min(minSoFar, x)
+      (newMin, newMaxDiff)
+    })._2
+  }
+
+  // scanLeft approach for maximum difference
+  def maxDifferenceUsingScanLeft(arr: Array[Int]): Int = {
+    if (arr.length < 2) return 0
+    
+    // scanLeft creates a running minimum from left to right
+    // It starts with Int.MaxValue and applies math.min to each element
+    // The result is an array where each position contains the minimum seen so far
+    val minPrefix = arr.scanLeft(Int.MaxValue)(math.min).init // .init removes the last element (which would be the overall minimum)
+    
+    println(s"Original array: ${arr.mkString(", ")}")
+    println(s"Min prefix array: ${minPrefix.mkString(", ")}")
+    
+    // For each element, calculate the difference with the minimum seen before it
+    val differences = arr.zip(minPrefix).map { case (curr, minBefore) => 
+      val diff = curr - minBefore
+      println(s"Element: $curr, Min before: $minBefore, Difference: $diff")
+      diff
+    }
+    
+    println(s"All differences: ${differences.mkString(", ")}")
+    
+    // Return the maximum difference
+    differences.max
+  }
+
+  val input13 = Array(7, 10, 4, 3, 7, 5, 2)
+  val res13 = maxDifferenceUsingScanLeft(input13)
+  println(s"res13 (scanLeft approach) :: ${res13}")
+
+
+
+
+  def helper(arr: Array[Int]):Unit = {
+
+
+    arr.groupBy(identity).mapValues(x => x.length).find(x => x._2 > 1).map(println)
+
+  }
+
+  val input14 = Array(1, 2, 3, 4, 5, 1, 2, 3)
+  helper(input14)
+
+
+  
+
+
+  // println(s"res10 :: ${res10.mkString(",")}")
+
   
   
 
