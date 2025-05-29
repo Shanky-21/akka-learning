@@ -14,6 +14,8 @@ lazy val root = (project in file("."))
 
       // Add these for testing:
       "com.typesafe.akka" %% "akka-testkit" % AkkaVersion % Test,
+      "com.typesafe.akka" %% "akka-persistence" % AkkaVersion,
+
       "org.scalatest" %% "scalatest" % "3.2.18" % Test // Or a newer 3.2.x version
     )
   )
