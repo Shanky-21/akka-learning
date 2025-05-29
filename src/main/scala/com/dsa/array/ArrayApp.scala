@@ -296,8 +296,301 @@ object ArrayApp extends App {
   helper(input14)
 
 
+  /* 
+    Stock buy and sell via local minima and maxima approach.
   
+   */
+  // def helper2(arr: Array[Int], i: Int): Boolean = {
 
+  //   if( arr.length >= 2){
+
+  //     if(i == 0 && (arr(i) > arr(i + 1))) {
+  //       false
+  //     }
+
+  //     else if(i == (arr.length - 1) && (arr(i) < arr(i -1))) {
+  //       true
+  //     } else false
+
+  //   } else if (arr.isEmpty) false
+  //   else true
+
+  // }
+
+  // def helper4(arr: Array[Int], i : Int): Boolean = {
+
+  //   if ( arr.length >= 2){
+
+  //     if ( i == 0 && (arr(i+1) < arr(i))) {
+  //       true
+  //     } else if ( i == (arr.length - 1) && (arr(i) < arr(i-1))) {
+  //       true
+  //     } else false
+
+
+  //   } else if (arr.isEmpty) false
+  //   else true
+
+
+  // }
+
+  // def helper3(arr: Array[Int]): Int = {
+
+  //   var p = 0
+
+  //   arr.foldLeft(0)((acc, x) => {
+
+  //     val buy = helper2(arr, x)
+
+  //     if (buy) {
+  //       println(s"buy at ${x}")
+  //     }
+
+  //     val sell = helper4(arr, x)
+
+  //     if (sell) {
+  //       println(s"sell at ${x}")
+  //       acc += buy 
+  //     }
+
+      
+
+
+  //   })
+
+
+
+
+  // }
+
+
+  /* 
+     1
+     2
+     3               x <- Sell 
+     4
+     5             x
+     6
+     7   x     x
+     8
+     9     x   <- Buy
+     10  
+        0 1 2 3 4 5 6 7 8 9
+  
+        Profit = 8 - 3 = 5
+
+      
+  
+  
+   */
+
+
+
+  def bestApproachStockBuySellAddProfit(arr: Array[Int]): Int = {
+
+
+    val res = arr.sliding(2).foldLeft(0)((acc, x) => {
+
+      x match {
+
+        case Array(a, b) => if (a < b) acc + (b - a) else acc
+        case _ => acc
+
+      }
+
+
+    })
+
+    res 
+
+  }
+
+  val input15 = Array(1, 5, 3, 8, 12)
+  val res15 = bestApproachStockBuySellAddProfit(input15)
+  println(s"res15 :: ${res15}")
+
+
+  def trappingRainWater(arr: Array[Int]): Int = {
+
+      /*
+    ------------------------------------------------------------
+    Explanation of lmax and rmax Computation for Trapping Rain Water
+    ------------------------------------------------------------
+
+    To calculate the amount of water that can be trapped at each index `i`,
+    we need to know the tallest bar to the *left* and to the *right* of `i`.
+
+    For each index i:
+      lmax[i] = maximum height of bars strictly to the LEFT of index i
+      rmax[i] = maximum height of bars strictly to the RIGHT of index i
+
+    This is required because the water that can be trapped at index `i` is:
+      water[i] = min(lmax[i], rmax[i]) - height[i]
+
+    We compute these efficiently using `scanLeft` and `scanRight`:
+
+    ----------------------
+    lmax Computation
+    ----------------------
+
+    val lmax = arr
+      .scanLeft(Int.MinValue)((maxSoFar, current) => math.max(maxSoFar, current))
+      .dropRight(1)
+
+    - `scanLeft` builds an array from left to right, accumulating the max height so far.
+    - The first value is a seed (Int.MinValue), ensuring there's no value to the left of index 0.
+    - For each index i, it records the max of elements before i (excluding current).
+    - We use `.dropRight(1)` to exclude the final value, which includes the last element itself.
+
+    Example:
+      Input:        arr = [2, 1, 5, 0]
+      scanLeft:           [Int.MinValue, 2, 2, 5, 5]
+      dropRight(1):       [Int.MinValue, 2, 2, 5]  ← valid lmax
+
+    ----------------------
+    rmax Computation
+    ----------------------
+
+    val rmax = arr
+      .scanRight(Int.MinValue)((current, maxSoFar) => math.max(maxSoFar, current))
+      .drop(1)
+
+    - `scanRight` works from right to left, also accumulating the max seen so far.
+    - The last value is seeded with Int.MinValue to represent "no bars to the right."
+    - For each index i, it gives the max of elements after i (excluding current).
+    - We use `.drop(1)` to remove the initial seed value.
+
+    Example:
+      Input:        arr = [2, 1, 5, 0]
+      scanRight:         [5, 5, 5, 0, Int.MinValue]
+      drop(1):           [5, 5, 5, 0]  ← valid rmax
+
+    With these `lmax` and `rmax` arrays, we can now compute water trapped at each index:
+      water[i] = max(0, min(lmax[i], rmax[i]) - arr[i])
+
+    This avoids redundant traversal and results in an O(n) time complexity.
+  */
+
+
+    val lmax = arr
+      .scanLeft(Int.MinValue)((maxSoFar, current) => math.max(maxSoFar, current))
+      .dropRight(1) // exclude current element from left max
+
+    val rmax = arr
+      .scanRight(Int.MinValue)((current, maxSoFar) => math.max(maxSoFar, current))
+      .drop(1) // exclude current element from right max
+
+
+
+    val p = arr.zipWithIndex.foldLeft(0)((acc, x) => {
+
+      val (value, index) = x
+
+      if (index != 0 && index != arr.length - 1) {
+
+        val h = math.min(lmax(index), rmax(index))
+
+        if (h > value) {
+          acc + (h - value)
+        } else acc
+
+      } else acc
+
+    })
+
+    p
+    
+
+  }
+
+  val input16 = Array(1, 5, 3, 8, 12)
+  val res16 = trappingRainWater(input16)
+  println(s"res16 :: ${res16}")
+
+
+  def totalOccurencesOfOne(arr: Array[Int]): Int = {
+
+    // val res = arr.foldLeft(0)((acc, x) => {
+
+    //   if(x == 1 ) acc + 1 else acc
+
+    // })
+
+    // res
+
+
+    // arr.filter(_ == 1).length
+    // Using map:
+    // arr.groupBy(identity).map { case (k,v) => k -> v.length }.getOrElse(1, 0)
+    // - Creates a new Map with transformed values
+    // - More memory efficient since it creates new Map
+    // - Preferred in Scala 2.13+ as mapValues is deprecated
+    
+    // Using mapValues:
+    // arr.groupBy(identity).mapValues(x => x.length).getOrElse(1, 0) 
+    // - Returns a view, lazily transforms values when accessed
+    // - Original Map values remain in memory
+    // - Less memory efficient for large maps
+    // - Deprecated in Scala 2.13+
+
+    arr.groupBy(identity).mapValues(x => x.length).getOrElse(1, 0)
+
+
+
+  }
+
+  val input17 = Array(1, 1, 1, 0, 0, 0, 1)
+  val res17 = totalOccurencesOfOne(input17)
+  println(s"res17 :: ${res17}")
+
+
+  def maxConsecutiveOnes(arr: Array[Int]) : Int = {
+
+
+    arr.foldLeft((0, 0))((acc, x) => {
+
+      val (maxCount, currentCount) = acc
+
+      if ( x == 1){
+
+        val newCurrentCount = currentCount + 1
+
+        if ( newCurrentCount > maxCount) {
+
+          (newCurrentCount, newCurrentCount)
+
+        } else (maxCount, newCurrentCount)
+
+      } else (maxCount, 0)
+
+    })._1
+
+  }
+
+  val input18 = Array(1, 1, 1, 0, 0 , 1,  1, 1, 1)
+  val res18 = maxConsecutiveOnes(input18)
+  println(s"res18 :: ${res18}")
+
+
+
+  def maxSubArraySum(arr: Array[Int]): Int = {
+    // Initialize result to first element instead of 0 to handle negative numbers
+    var maxSoFar = arr(0)
+    var maxEndingHere = arr(0)
+
+    for (i <- 1 until arr.length) {
+      // For each element, either start new subarray or extend existing one
+      maxEndingHere = math.max(arr(i), maxEndingHere + arr(i))
+      maxSoFar = math.max(maxSoFar, maxEndingHere)
+    }
+
+    maxSoFar
+  }
+
+  val input19 = Array(-5, 1, -2, 3, -1, 2, -2)
+
+  val res19 = maxSubArraySum(input19)
+  println(s"res19 :: ${res19}")
 
   // println(s"res10 :: ${res10.mkString(",")}")
 
