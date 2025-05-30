@@ -1,4 +1,4 @@
-package com.example.persistence
+package com.akka.persistence
 
 // Events: represent state changes that have occurred and are persisted
 object CounterActorEvents {

@@ -1,6 +1,6 @@
-package com.example.persistence
+package com.akka.persistence
 
-import com.example.persistence.CounterActorEvents._
+import com.akka.persistence.CounterActorEvents._
 
 // State: the in-memory representation of the actor's data
 case class CounterActorState(currentValue: Int = 0) {

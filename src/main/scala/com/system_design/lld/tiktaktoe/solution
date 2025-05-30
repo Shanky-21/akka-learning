@@ -24,6 +24,8 @@ Different Entities:
    game_id: String
    game_started_at: DateTime
    game_status: Game_status
+   player_1 : Player
+   player_2 : Player
 
 3. Piece: 
    a. type : "X" || "O"
@@ -32,6 +34,10 @@ Different Entities:
    status: "completed", "in_progress", "cancelled"
    completed_at : Option[DateTime]
    cancelled_at : Option[DateTime]
+
+
+
+
 
 
 

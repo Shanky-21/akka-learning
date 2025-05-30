@@ -1,4 +1,4 @@
-package com.example.persistence
+package com.akka.persistence
 
 // Commands: represent intent to change state
 object CounterActorCommands {

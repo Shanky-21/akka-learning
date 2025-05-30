@@ -109,4 +109,3 @@ Player 2: Enter box:
 - Keep the code extensible to allow more than 2 players/piece types.
 
 
- 

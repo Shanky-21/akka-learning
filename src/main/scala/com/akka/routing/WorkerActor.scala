@@ -1,4 +1,4 @@
-package com.example.routing
+package com.akka.routing
 
 import akka.actor.{Actor, ActorLogging, Props}
 import scala.util.Random

@@ -1,9 +1,9 @@
-package com.example.routing
+package com.akka.routing
 
 import akka.actor.{ActorSystem, Props}
 import akka.pattern.ask
 import akka.util.Timeout
-import com.example.routing.MasterActor.{BatchComplete, ProcessBatch}
+import com.akka.routing.MasterActor.{BatchComplete, ProcessBatch}
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration._

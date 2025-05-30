@@ -1,10 +1,10 @@
-package com.example.routing
+package com.akka.routing
 
 import akka.actor.{Actor, ActorLogging, ActorRef, ActorSystem, Props}
 import akka.pattern.ask
 import akka.routing.{FromConfig, RoundRobinPool}
 import akka.util.Timeout
-import com.example.routing.WorkerActor.{Work, WorkComplete}
+import com.akka.routing.WorkerActor.{Work, WorkComplete}
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration._

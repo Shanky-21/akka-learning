@@ -1,8 +1,8 @@
-package com.example.routing
+package com.akka.routing
 
 import akka.actor.{Actor, ActorLogging, ActorRef, Props, Terminated}
 import akka.routing.{ActorRefRoutee, RoundRobinRoutingLogic, Router}
-import com.example.routing.WorkerActor.{Work, WorkComplete}
+import com.akka.routing.WorkerActor.{Work, WorkComplete}
 
 object MasterActor {
   def props(workerCount: Int): Props = Props(new MasterActor(workerCount))

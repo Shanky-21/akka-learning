@@ -1,9 +1,9 @@
-package com.example.persistence
+package com.akka.persistence
 
 import akka.actor.{ActorRef, ActorSystem, PoisonPill, Props}
 import akka.pattern.ask
 import akka.util.Timeout
-import com.example.persistence.CounterActorCommands._
+import com.akka.persistence.CounterActorCommands._
 import com.typesafe.config.ConfigFactory
 
 import scala.concurrent.duration._

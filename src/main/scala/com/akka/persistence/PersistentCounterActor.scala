@@ -1,9 +1,9 @@
-package com.example.persistence
+package com.akka.persistence
 
 import akka.actor.{ActorLogging, Props}
 import akka.persistence.{PersistentActor, RecoveryCompleted, SaveSnapshotFailure, SaveSnapshotSuccess, SnapshotOffer}
-import com.example.persistence.CounterActorCommands._
-import com.example.persistence.CounterActorEvents._
+import com.akka.persistence.CounterActorCommands._
+import com.akka.persistence.CounterActorEvents._
 
 object PersistentCounterActor {
   def props(id: String): Props = Props(new PersistentCounterActor(id))
