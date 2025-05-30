@@ -1,0 +1,45 @@
+
+
+
+/*
+We are designing a player tik-tak toe game. 
+
+
+How it should be -> 
+
+Player click on start, Player provide their names, 
+Player-1, player-2. 
+
+Then game starts, Player one provides entry of peices. 
+Player two gets the chance. 
+
+Different Entities:
+
+1. Player
+    a. player_id
+    b. name : String, 
+    c. peice_type : Peice 
+
+2. Game
+   game_id: String
+   game_started_at: DateTime
+   game_status: Game_status
+
+3. Piece: 
+   a. type : "X" || "O"
+
+4. Enum Game_Status: 
+   status: "completed", "in_progress", "cancelled"
+   completed_at : Option[DateTime]
+   cancelled_at : Option[DateTime]
+
+
+
+
+
+
+
+
+
+
+*/
