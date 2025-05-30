@@ -1,8 +1,9 @@
-package com.example
+package com.akka
 
 import akka.actor.SupervisorStrategy._
 import akka.actor.{Actor, ActorLogging, ActorRef, AllForOneStrategy, OneForOneStrategy, Props, SupervisorStrategy, Terminated} // Import Terminated
 import scala.concurrent.duration._
+import com.akka.WorkerActor
 
 object SupervisorActor {
   def props: Props = Props[SupervisorActor]()

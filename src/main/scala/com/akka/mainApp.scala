@@ -1,7 +1,7 @@
-package com.example
+package com.akka
 
 import akka.actor.{ActorSystem, Props}
-import com.example.Greeter.Greet // Import the Greet message
+import com.akka.Greeter.Greet // Import the Greet message
 
 object MainApp extends App {
 

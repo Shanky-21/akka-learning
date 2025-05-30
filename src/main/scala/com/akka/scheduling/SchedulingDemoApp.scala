@@ -1,4 +1,4 @@
-package com.example.scheduling
+package com.akka.scheduling
 
 import akka.actor.{ActorRef, ActorSystem, PoisonPill, Props}
 import com.typesafe.config.ConfigFactory

@@ -1,10 +1,10 @@
-package com.example
+package com.akka
 
 import akka.actor.{ActorRef, ActorSystem, PoisonPill, Props}
 import akka.pattern.{ask, after, AskTimeoutException}
 import akka.util.Timeout
-import com.example.SupervisorActor.{CreateWorker, ForwardToWorker}
-import com.example.WorkerActor._ // Import worker messages
+import com.akka.SupervisorActor.{CreateWorker, ForwardToWorker}
+import com.akka.WorkerActor._ // Import worker messages
 
 import scala.concurrent.duration._
 import scala.concurrent.ExecutionContext

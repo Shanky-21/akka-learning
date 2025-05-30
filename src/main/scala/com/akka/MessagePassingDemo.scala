@@ -1,16 +1,16 @@
-package com.example
+package com.akka
 
 import akka.actor.{ActorSystem, Props}
 import akka.util.Timeout
-import com.example.EchoActor
-import com.example.ForwarderActor.ForwardMessage 
+import com.akka.EchoActor
+import com.akka.ForwarderActor.ForwardMessage 
 
 import scala.concurrent.duration._
 import scala.concurrent.ExecutionContext.Implicits.global // For future callback like  onComplete
 import scala.util.{Failure, Success}
 import akka.pattern.ask 
-import com.example.EchoActor.EchoMessage
-import com.example.EchoActor.Echoed
+import com.akka.EchoActor.EchoMessage
+import com.akka.EchoActor.Echoed
 
 object MessagePassingDemo extends App {
 

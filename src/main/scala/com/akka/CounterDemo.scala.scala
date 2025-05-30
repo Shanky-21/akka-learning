@@ -1,9 +1,9 @@
-package com.example
+package com.akka
 
 import akka.actor.{ActorSystem, ActorRef, Props}
 import akka.pattern.ask
 import akka.util.Timeout
-import com.example.Counter._ // import messages and props
+import com.akka.Counter._ // import messages and props
 
 import scala.concurrent.duration._
 

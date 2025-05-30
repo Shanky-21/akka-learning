@@ -1,4 +1,4 @@
-package com.example.scheduling
+package com.akka.scheduling
 
 import akka.actor.{Actor, ActorLogging, Cancellable, Props, Timers}
 import scala.concurrent.duration._

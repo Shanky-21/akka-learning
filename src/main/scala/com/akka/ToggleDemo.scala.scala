@@ -1,9 +1,9 @@
-package com.example
+package com.akka
 
 import akka.actor.{ActorSystem}
 import akka.pattern.ask
 import akka.util.Timeout
-import com.example.Toggle._
+import com.akka.Toggle._
 
 import scala.concurrent.duration._
 import scala.concurrent.ExecutionContext.Implicits.global
