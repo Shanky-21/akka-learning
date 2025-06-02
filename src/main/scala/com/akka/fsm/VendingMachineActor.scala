@@ -1,5 +1,5 @@
 // src/main/scala/com/example/fsm/VendingMachineActor.scala
-package com.example.fsm
+package com.akka.fsm
 
 import akka.actor.{Actor, ActorLogging, Props, Stash}
 

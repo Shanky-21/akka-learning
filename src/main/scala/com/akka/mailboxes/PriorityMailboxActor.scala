@@ -1,7 +1,7 @@
-package com.example.mailboxes
+package com.akka.mailboxes
 
 import akka.actor.{Actor, ActorLogging, Props}
-import com.example.mailboxes.MailboxDemoMessages._
+import com.akka.mailboxes.MailboxDemoMessages._
 
 object PriorityMailboxActor {
   def props: Props = Props[PriorityMailboxActor]()

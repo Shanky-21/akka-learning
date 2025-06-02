@@ -1,5 +1,5 @@
 // src/main/scala/com/example/dispatchers/FastActor.scala
-package com.example.dispatchers
+package com.akka.dispatchers
 
 import akka.actor.{Actor, ActorLogging, Props}
 

@@ -1,4 +1,4 @@
-package com.example.mailboxes
+package com.akka.mailboxes
 
 import akka.dispatch.PriorityGenerator
 

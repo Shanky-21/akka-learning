@@ -1,9 +1,9 @@
-package com.example.testing
+package com.akka.testing
 
 import akka.actor.{ActorSystem, Props}
 import akka.testkit.{ImplicitSender, TestKit, TestProbe} // TestProbe for collaborator
  // Import messages
-import com.example.testing.StatefulEchoActor._
+import com.akka.testing.StatefulEchoActor._
 import org.scalatest.BeforeAndAfterAll
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpecLike

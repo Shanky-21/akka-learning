@@ -4,8 +4,8 @@ package com.example
 import akka.actor.{ActorSystem, Props}
 import akka.pattern.ask
 import akka.util.Timeout
-import com.example.fsm.VendingMachineActor
-import com.example.fsm.VendingMachineActor._ // Import messages
+import com.akka.fsm.VendingMachineActor
+import com.akka.fsm.VendingMachineActor._ // Import messages
 
 import scala.concurrent.duration._
 import scala.concurrent.ExecutionContext.Implicits.global // Important for Future combinators

@@ -1,13 +1,13 @@
 // src/main/scala/com/example/dispatchers/DispatcherDemo.scala
-package com.example.dispatchers
+package com.akka.dispatchers
 
 import akka.actor.{ActorRef, ActorSystem, Props}
 import akka.pattern.ask
 import akka.routing.RoundRobinPool
 import akka.util.Timeout
-import com.example.dispatchers.FastActor.{FastTask, FastTaskResult}
-import com.example.dispatchers.SlowBlockingActor.{SlowTask, SlowTaskResult}
-import com.example.dispatchers.{FastActor, SlowBlockingActor}
+import com.akka.dispatchers.FastActor.{FastTask, FastTaskResult}
+import com.akka.dispatchers.SlowBlockingActor.{SlowTask, SlowTaskResult}
+import com.akka.dispatchers.{FastActor, SlowBlockingActor}
 
 import scala.concurrent.Future
 import scala.concurrent.duration._

@@ -1,11 +1,11 @@
-package com.example.mailboxes
+package com.akka.mailboxes
 
 // Add these imports for the anonymous DeadLetter listener actor
 import akka.actor.{Actor, ActorLogging, ActorRef, ActorSystem, DeadLetter, Props}
 import akka.pattern.ask
 import akka.util.Timeout
 import com.typesafe.config.ConfigFactory
-import com.example.mailboxes.MailboxDemoMessages._
+import com.akka.mailboxes.MailboxDemoMessages._
 
 import scala.concurrent.duration._
 import scala.concurrent.ExecutionContext

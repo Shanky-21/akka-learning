@@ -1,7 +1,7 @@
-package com.example.mailboxes
+package com.akka.mailboxes
 
 import akka.actor.{Actor, ActorLogging, Props, Timers} // Timers might not be used if Tick is removed
-import com.example.mailboxes.MailboxDemoMessages._
+import com.akka.mailboxes.MailboxDemoMessages._
 
 import scala.concurrent.duration._ // Only if Timers are used
 
